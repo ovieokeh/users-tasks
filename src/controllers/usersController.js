@@ -35,9 +35,7 @@ class UsersController {
 
     UsersService.deleteUser(userId)
       .then(() => {
-        res.status(200).json({
-          message: 'user deleted successfully'
-        })
+        res.status(204).json()
       })
       .catch(err => {
         res.status(500).json({

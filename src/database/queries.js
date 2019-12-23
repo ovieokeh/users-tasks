@@ -1,3 +1,4 @@
+const createUser = 'INSERT INTO users (name) VALUES ($1)'
 const getAllUsers = 'SELECT * FROM users ORDER BY id ASC'
 const updateUser = 'UPDATE users SET name = $1 WHERE id = $2'
 const deleteUser = 'DELETE FROM users WHERE id = $1'
@@ -10,11 +11,6 @@ const createTask = `
 const getUserTasks = 'SELECT * FROM tasks WHERE user_id = $1'
 const updateUserTask = 'UPDATE tasks SET state = $1 WHERE id = $2;'
 const deleteTask = 'DELETE FROM tasks WHERE id = $1;'
-
-// const listAllTables = `SELECT table_name
-// FROM information_schema.tables
-// WHERE table_schema='public'
-//  AND table_type='BASE TABLE';`
 
 const createUsersTable = `
   CREATE TABLE IF NOT EXISTS users (
@@ -33,6 +29,7 @@ const createTasksTable = `
 `
 
 module.exports = {
+  createUser,
   getAllUsers,
   updateUser,
   deleteUser,
@@ -42,5 +39,4 @@ module.exports = {
   deleteTask,
   createUsersTable,
   createTasksTable
-  // listAllTables
 }

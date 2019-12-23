@@ -1,6 +1,7 @@
 const pgp = require('pg-promise')()
 const config = require('./config')
 
-const dbPool = pgp(config)
+const db = pgp(config)
+const endPool = pgp.end
 
-module.exports = dbPool
+module.exports = { db, endPool }

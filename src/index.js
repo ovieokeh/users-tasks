@@ -19,3 +19,5 @@ app.use(routes)
 app.listen(port, () => {
   log(`App running on port ${port}.`)
 })
+
+module.exports = app
