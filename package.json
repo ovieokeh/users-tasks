@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "migrate": "node src/database/migrate.js",
     "cleardb": "node src/database/clearDB.js",
