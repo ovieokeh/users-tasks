@@ -15,6 +15,10 @@ class TasksService {
   static updateTask(state, taskId) {
     return db.none(queries.updateUserTask(), [state, taskId])
   }
+
+  static deleteTask(taskId) {
+    return db.none(queries.deleteTask(), [taskId])
+  }
 }
 
 module.exports = TasksService

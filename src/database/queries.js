@@ -9,6 +9,7 @@ const createTask = () => `
 `
 const getUserTasks = () => `SELECT * FROM tasks WHERE user_id = $1`
 const updateUserTask = () => `UPDATE tasks SET state = $1 WHERE id = $2;`
+const deleteTask = () => `DELETE FROM tasks WHERE id = $1;`
 
 // const listAllTables = () => `SELECT table_name
 // FROM information_schema.tables
@@ -38,6 +39,7 @@ module.exports = {
   createTask,
   getUserTasks,
   updateUserTask,
+  deleteTask,
   createUsersTable,
   createTasksTable
   // listAllTables

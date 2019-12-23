@@ -45,6 +45,20 @@ class TasksController {
         })
       })
   }
+
+  static deleteTask(req, res) {
+    const { taskId } = req.params
+
+    TasksService.deleteTask(taskId)
+      .then(() => {
+        res.status(204).json()
+      })
+      .catch(err => {
+        res.status(500).json({
+          message: err.message
+        })
+      })
+  }
 }
 
 module.exports = TasksController

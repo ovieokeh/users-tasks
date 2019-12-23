@@ -4,6 +4,7 @@ const {
   taskCreateRules,
   tasksUserRules,
   taskUpdateRules,
+  tasksDeleteRules,
   validate
 } = require('./middlewares/validators')
 
@@ -26,6 +27,12 @@ tasksRouter.put(
   taskUpdateRules,
   validate,
   TasksController.updateTask
+)
+tasksRouter.delete(
+  '/tasks/:taskId',
+  tasksDeleteRules,
+  validate,
+  TasksController.deleteTask
 )
 
 module.exports = tasksRouter

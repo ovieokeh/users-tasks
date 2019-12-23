@@ -37,6 +37,10 @@ const taskUpdateRules = [
   ])
 ]
 
+const tasksDeleteRules = [
+  param('taskId', 'the taskId param must be numeric').isNumeric()
+]
+
 // validator function
 const validate = (req, res, next) => {
   const errors = validationResult(req)
@@ -59,5 +63,6 @@ module.exports = {
   taskCreateRules,
   tasksUserRules,
   taskUpdateRules,
+  tasksDeleteRules,
   validate
 }
