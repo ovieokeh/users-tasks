@@ -14,6 +14,16 @@ const userDeleteRules = [
   param('userId', 'the userId param must be numeric').isNumeric()
 ]
 
+const taskCreateRules = [
+  body('userId', 'the task requires a userId').exists(),
+  body('userId', 'the userId must be numeric').isNumeric(),
+  body('description', 'the task requires a description').exists(),
+  body(
+    'description',
+    'the task description must contain at least 5 characters'
+  ).isLength({ min: 5 })
+]
+
 // validator function
 const validate = (req, res, next) => {
   const errors = validationResult(req)
@@ -33,5 +43,6 @@ const validate = (req, res, next) => {
 module.exports = {
   userUpdateRules,
   userDeleteRules,
+  taskCreateRules,
   validate
 }
