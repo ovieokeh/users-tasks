@@ -11,6 +11,10 @@ class TasksService {
   static getUserTasks(userId) {
     return db.many(queries.getUserTasks(), [userId]).then(res => res)
   }
+
+  static updateTask(state, taskId) {
+    return db.none(queries.updateUserTask(), [state, taskId])
+  }
 }
 
 module.exports = TasksService

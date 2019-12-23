@@ -28,6 +28,15 @@ const tasksUserRules = [
   param('userId', 'the userId param must be numeric').isNumeric()
 ]
 
+const taskUpdateRules = [
+  param('taskId', 'the taskId param must be numeric').isNumeric(),
+  body('state', 'the task requires a new state').exists(),
+  body('state', 'the state must be either "done" or "not done"').isIn([
+    'done',
+    'not done'
+  ])
+]
+
 // validator function
 const validate = (req, res, next) => {
   const errors = validationResult(req)
@@ -49,5 +58,6 @@ module.exports = {
   userDeleteRules,
   taskCreateRules,
   tasksUserRules,
+  taskUpdateRules,
   validate
 }

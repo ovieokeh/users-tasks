@@ -8,6 +8,7 @@ const createTask = () => `
   VALUES ($1, $2, $3)
 `
 const getUserTasks = () => `SELECT * FROM tasks WHERE user_id = $1`
+const updateUserTask = () => `UPDATE tasks SET state = $1 WHERE id = $2;`
 
 // const listAllTables = () => `SELECT table_name
 // FROM information_schema.tables
@@ -36,6 +37,7 @@ module.exports = {
   deleteUser,
   createTask,
   getUserTasks,
+  updateUserTask,
   createUsersTable,
   createTasksTable
   // listAllTables

@@ -3,6 +3,7 @@ const TasksController = require('../controllers/tasksController')
 const {
   taskCreateRules,
   tasksUserRules,
+  taskUpdateRules,
   validate
 } = require('./middlewares/validators')
 
@@ -19,6 +20,12 @@ tasksRouter.get(
   tasksUserRules,
   validate,
   TasksController.getUserTasks
+)
+tasksRouter.put(
+  '/tasks/:taskId',
+  taskUpdateRules,
+  validate,
+  TasksController.updateTask
 )
 
 module.exports = tasksRouter
