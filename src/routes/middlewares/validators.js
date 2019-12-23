@@ -24,6 +24,10 @@ const taskCreateRules = [
   ).isLength({ min: 5 })
 ]
 
+const tasksUserRules = [
+  param('userId', 'the userId param must be numeric').isNumeric()
+]
+
 // validator function
 const validate = (req, res, next) => {
   const errors = validationResult(req)
@@ -44,5 +48,6 @@ module.exports = {
   userUpdateRules,
   userDeleteRules,
   taskCreateRules,
+  tasksUserRules,
   validate
 }

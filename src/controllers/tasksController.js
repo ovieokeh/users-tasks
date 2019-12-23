@@ -16,6 +16,20 @@ class TasksController {
         })
       })
   }
+
+  static getUserTasks(req, res) {
+    const { userId } = req.params
+
+    TasksService.getUserTasks(userId)
+      .then(tasks => {
+        res.status(200).json(tasks)
+      })
+      .catch(err => {
+        res.status(500).json({
+          message: err.message
+        })
+      })
+  }
 }
 
 module.exports = TasksController

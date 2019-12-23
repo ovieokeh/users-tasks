@@ -7,6 +7,10 @@ class TasksService {
       .any(queries.createTask(), [description, 'not done', userId])
       .then(res => res)
   }
+
+  static getUserTasks(userId) {
+    return db.many(queries.getUserTasks(), [userId]).then(res => res)
+  }
 }
 
 module.exports = TasksService
