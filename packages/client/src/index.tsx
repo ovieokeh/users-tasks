@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './components'
+
+import App from './components'
 
 const rootNode = document.querySelector('#root')
 

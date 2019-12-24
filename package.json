@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "lerna run dev"
+    "dev": "lerna run dev --stream"
   },
   "repository": {
     "type": "git",
