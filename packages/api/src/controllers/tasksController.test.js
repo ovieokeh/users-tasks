@@ -13,7 +13,7 @@ describe('Tasks Service', () => {
     it('should enforce a numeric userId', done => {
       chai
         .request(app)
-        .post('/tasks')
+        .post('/api/tasks')
         .send({ description: 'random task', userId: 'a' })
         .end((err, res) => {
           res.should.have.status(422)
@@ -25,7 +25,7 @@ describe('Tasks Service', () => {
     it('should enforce a description field', done => {
       chai
         .request(app)
-        .post('/tasks')
+        .post('/api/tasks')
         .send({ userId: 4 })
         .end((err, res) => {
           res.should.have.status(422)
@@ -39,7 +39,7 @@ describe('Tasks Service', () => {
     it('should enforce a minimum length of 5 characters for the description field', done => {
       chai
         .request(app)
-        .post('/tasks')
+        .post('/api/tasks')
         .send({ description: 'Sa', userId: 4 })
         .end((err, res) => {
           res.should.have.status(422)
@@ -53,7 +53,7 @@ describe('Tasks Service', () => {
     it('should create a task successfully', done => {
       chai
         .request(app)
-        .post('/tasks')
+        .post('/api/tasks')
         .send({ description: 'random task', userId: 4 })
         .end((err, res) => {
           res.should.have.status(201)
@@ -67,7 +67,7 @@ describe('Tasks Service', () => {
     it('should enforce numeric taskIds', done => {
       chai
         .request(app)
-        .put('/tasks/a')
+        .put('/api/tasks/a')
         .send({ state: 'done' })
         .end((err, res) => {
           res.should.have.status(422)
@@ -82,7 +82,7 @@ describe('Tasks Service', () => {
     it('should enforce the state field', done => {
       chai
         .request(app)
-        .put('/tasks/1')
+        .put('/api/tasks/1')
         .send({ someOtherField: 'done' })
         .end((err, res) => {
           res.should.have.status(422)
@@ -97,7 +97,7 @@ describe('Tasks Service', () => {
     it('should enforce the correct state value', done => {
       chai
         .request(app)
-        .put('/tasks/1')
+        .put('/api/tasks/1')
         .send({ state: 'invalid state' })
         .end((err, res) => {
           res.should.have.status(422)
@@ -112,7 +112,7 @@ describe('Tasks Service', () => {
     it('should update a task successfully', done => {
       chai
         .request(app)
-        .put('/tasks/1')
+        .put('/api/tasks/1')
         .send({ state: 'done' })
         .end((err, res) => {
           res.should.have.status(200)
@@ -126,7 +126,7 @@ describe('Tasks Service', () => {
     it('should enforce numeric taskIds', done => {
       chai
         .request(app)
-        .delete('/tasks/a')
+        .delete('/api/tasks/a')
         .end((err, res) => {
           res.should.have.status(422)
           res.body.errors[0].should.have.property(
@@ -140,7 +140,7 @@ describe('Tasks Service', () => {
     it('should delete a task successfully', done => {
       chai
         .request(app)
-        .delete('/tasks/5')
+        .delete('/api/tasks/5')
         .end((err, res) => {
           res.should.have.status(204)
           done()
@@ -152,7 +152,7 @@ describe('Tasks Service', () => {
     it('should enforce numeric taskIds', done => {
       chai
         .request(app)
-        .get('/users/a/tasks')
+        .get('/api/users/a/tasks')
         .end((err, res) => {
           res.should.have.status(422)
           res.body.errors[0].should.have.property(
@@ -166,7 +166,7 @@ describe('Tasks Service', () => {
     it("should list a user's tasks successfully", done => {
       chai
         .request(app)
-        .get('/users/1/tasks')
+        .get('/api/users/1/tasks')
         .end((err, res) => {
           res.should.have.status(200)
           res.body.should.be.an('array')

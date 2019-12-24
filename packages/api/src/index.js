@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -16,7 +17,12 @@ app.use(
     extended: true
   })
 )
-app.use(routes)
+app.use('/api', routes)
+app.use(express.static(path.join(__dirname, '../../client/build')))
+
+app.get('*', (_, res) => {
+  res.sendFile(path.resolve(__dirname, '../../client/build/index.html'))
+})
 
 app.listen(port, () => {
   log(`App running on port ${port}.`)

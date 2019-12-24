@@ -1,16 +1,11 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 
 import './Navbar.less'
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <Link className="navbar__link" to="/">
-        User Tasker
-      </Link>
-    </nav>
-  )
-}
+const Navbar = () => (
+  <nav className="navbar">
+    <p className="navbar__brand">User Tasker</p>
+  </nav>
+)
 
 export default Navbar

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { IUsers } from '../types'
 
-const API_URL = 'http://localhost:3200/users'
+const API_URL = 'http://localhost:3200/api/users'
 
 type IState = [IUsers, boolean]
 
