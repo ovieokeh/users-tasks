@@ -1,14 +1,12 @@
 @import '../variables.less';
 
-.user {
+.task {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: minmax(60px, auto);
+  grid-template-rows: minmax(40px, auto);
   align-items: center;
   color: @brand-indigo;
-  background-color: @brand-peach-30;
-  min-height: 60px;
-  margin-bottom: 0.2%;
+  min-height: 30px;
   transition: background-color ease;
   cursor: pointer;
 
@@ -19,7 +17,7 @@
   &__details {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 50px;
     text-decoration: none;
     color: @brand-indigo;
 
@@ -27,12 +25,19 @@
       pointer-events: none;
     }
 
-    &__name {
+    &__description {
+      font-size: 0.9em;
       transition: transform 150ms ease-out;
     }
 
-    &:hover &__name {
-      transform: translateX(10px);
+    &:hover &__description {
+      transform: translateX(5px);
+    }
+
+    &__description.completed {
+      text-decoration: line-through;
+      opacity: 0.5;
+      transform: none !important;
     }
 
     &__arrow {
@@ -66,7 +71,9 @@
     padding-right: 20px;
 
     &__action {
-      fill: @brand-indigo;
+      height: 10px;
+      width: 15px;
+      fill: @brand-red;
       transition: all 300ms ease-out;
       -webkit-transition: all 100ms ease-out;
       -moz-transition: all 300ms ease-out;
@@ -75,8 +82,8 @@
         transform: scale(1.5);
       }
 
-      &.minus {
-        fill: @brand-red;
+      &.check {
+        fill: green;
       }
     }
   }

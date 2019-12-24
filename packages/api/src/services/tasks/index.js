@@ -9,7 +9,7 @@ class TasksService {
   }
 
   static getUserTasks(userId) {
-    return db.many(queries.getUserTasks, [userId]).then(res => res)
+    return db.any(queries.getUserTasks, [userId]).then(res => res)
   }
 
   static updateTask(state, taskId) {

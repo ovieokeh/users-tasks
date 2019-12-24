@@ -1,0 +1,21 @@
+@import '../variables.less';
+
+.tasks {
+  background-color: @white;
+  overflow: scroll;
+  height: 0;
+  transition: height 150ms linear;
+  -webkit-transition: height 150ms linear;
+  -moz-transition: height 150ms linear;
+  -ms-transition: height 150ms linear;
+  -o-transition: height 150ms linear;
+
+  &.show {
+    height: 200px;
+    transition: height 200ms linear;
+    -webkit-transition: height 200ms linear;
+    -moz-transition: height 200ms linear;
+    -ms-transition: height 200ms linear;
+    -o-transition: height 200ms linear;
+  }
+}
