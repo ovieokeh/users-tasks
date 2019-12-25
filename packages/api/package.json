@@ -10,7 +10,8 @@
     "migrate": "node src/database/migrate.js",
     "cleardb": "node src/database/clearDB.js",
     "preparedb:tests": "NODE_ENV=test yarn cleardb && NODE_ENV=test yarn migrate",
-    "test": "yarn preparedb:tests && NODE_ENV=test mocha --recursive src/**/*.test.js --timeout 10000 --exit"
+    "test": "yarn preparedb:tests && NODE_ENV=test mocha --recursive src/**/*.test.js --timeout 10000 --exit",
+    "install-all": "yarn install"
   },
   "repository": {
     "type": "git",
