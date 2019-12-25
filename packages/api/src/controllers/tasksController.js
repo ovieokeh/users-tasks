@@ -5,9 +5,10 @@ class TasksController {
     const { description, userId } = req.body
 
     TasksService.createTask(description, userId)
-      .then(() => {
+      .then(task => {
         res.status(201).json({
-          message: 'task created successfully'
+          message: 'task created successfully',
+          task
         })
       })
       .catch(err => {

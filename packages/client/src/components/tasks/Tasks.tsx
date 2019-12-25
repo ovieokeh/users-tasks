@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import Task from '../task/Task'
-import EmptyTask from '../empty-task/EmptyTask'
+import NewTask from '../new-task/NewTask'
 import useTasks from './useTasks'
 import { deleteTask, updateTask } from '../../actions'
 import { ITask } from '../types'
@@ -47,17 +47,28 @@ const Tasks: React.FC<IProps> = ({ userId, show }) => {
     })
   }
 
-  const renderTasks = () => {
-    if (!tasksToRender.length) return <EmptyTask />
+  const onTaskCreate = (newTask: ITask) => {
+    setTasksToRender([...tasksToRender, newTask])
+  }
 
-    return tasksToRender.map(task => (
-      <Task
-        key={task.id}
-        task={task}
-        onDelete={onTaskDelete(task.id)}
-        onUpdate={onTaskUpdate(task)}
-      />
-    ))
+  const renderTasks = () => {
+    if (!tasksToRender.length)
+      return <NewTask userId={userId} onTaskCreate={onTaskCreate} />
+
+    return (
+      <>
+        {tasksToRender.map(task => (
+          <Task
+            key={task.id}
+            task={task}
+            onDelete={onTaskDelete(task.id)}
+            onUpdate={onTaskUpdate(task)}
+          />
+        ))}
+
+        <NewTask userId={userId} onTaskCreate={onTaskCreate} />
+      </>
+    )
   }
 
   return <div className={classname}>{renderTasks()}</div>

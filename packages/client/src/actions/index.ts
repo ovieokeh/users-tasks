@@ -20,11 +20,17 @@ const updateUser = (userId: number, updatedName: string) =>
 const updateTask = (taskId: number, state: 'done' | 'not done') =>
   axios.put(API_URL + `tasks/${taskId}`, { state })
 
+const createTask = (description: string, userId: number) =>
+  axios
+    .post(API_URL + 'tasks', { description, userId })
+    .then(res => res.data.task)
+
 export {
   fetchUsers,
   fetchTasks,
   deleteUser,
   deleteTask,
   updateUser,
-  updateTask
+  updateTask,
+  createTask
 }

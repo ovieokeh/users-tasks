@@ -7,6 +7,7 @@ const createTask = `
   INSERT INTO tasks
     (description, state, user_id)
   VALUES ($1, $2, $3)
+  RETURNING *
 `
 const getUserTasks = 'SELECT * FROM tasks WHERE user_id = $1'
 const updateUserTask = 'UPDATE tasks SET state = $1 WHERE id = $2;'
