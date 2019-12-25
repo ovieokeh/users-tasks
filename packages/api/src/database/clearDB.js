@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { db, endPool } = require('./')
 
 function clearDB() {

@@ -3,6 +3,7 @@ require('./usersController.test') // so that it runs first
 
 const chai = require('chai')
 const chaiHttp = require('chai-http')
+
 const app = require('..')
 
 chai.should()
