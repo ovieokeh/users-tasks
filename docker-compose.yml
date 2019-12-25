@@ -12,6 +12,17 @@ services:
     healthcheck:
       test: exit 0
 
+  tasks-db:
+    container_name: tasks-db
+    build: ./services/tasks/src/database
+    ports:
+      - '5434:5432' # expose ports - HOST:CONTAINER
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    healthcheck:
+      test: exit 0
+
   users-service:
     container_name: users-service
     build: ./services/users/
@@ -30,17 +41,6 @@ services:
     links:
       - users-db
 
-  tasks-db:
-    container_name: tasks-db
-    build: ./services/tasks/src/database
-    ports:
-      - '5433:5432' # expose ports - HOST:CONTAINER
-    environment:
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
-    healthcheck:
-      test: exit 0
-
   tasks-service:
     container_name: tasks-service
     build: ./services/tasks/
@@ -48,7 +48,7 @@ services:
       - './services/tasks:/usr/src/app'
       - './services/tasks/package.json:/usr/src/package.json'
     ports:
-      - '3000:3000' # expose ports - HOST:CONTAINER
+      - '3001:3000' # expose ports - HOST:CONTAINER
     environment:
       - DATABASE_URL=postgres://postgres:postgres@tasks-db:5432/tasks_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@tasks-db:5432/tasks_test
@@ -59,12 +59,12 @@ services:
     links:
       - tasks-db
 
-  web-service:
-    container_name: web-service
+  web:
+    container_name: web
     build: ./services/web/
     volumes:
       - './services/web:/usr/src/app'
-      - '/usr/src/app/node_modules'
+      - './services/web/package.json:/usr/src/package.json'
     ports:
       - '3007:3006' # expose ports - HOST:CONTAINER
     environment:
