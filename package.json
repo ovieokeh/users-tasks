@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "lerna run dev --stream",
     "build": "lerna run build --stream",
-    "heroku-postbuild": "lerna run install-all --stream",
+    "heroku-postbuild": "lerna run install-all --stream && yarn build",
     "start": "lerna run start --stream"
   },
   "repository": {
