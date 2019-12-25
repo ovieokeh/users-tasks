@@ -6,9 +6,10 @@ import './Task.less'
 
 type IProps = {
   task: ITask
+  onDelete: () => void
 }
 
-const Task: React.FC<IProps> = ({ task }) => {
+const Task: React.FC<IProps> = ({ task, onDelete }) => {
   const status = task.state === 'done' ? 'completed' : 'pending'
 
   return (
@@ -17,11 +18,11 @@ const Task: React.FC<IProps> = ({ task }) => {
         <p className={`task__details__description ${status}`}>
           {task.description}
         </p>
-        {/* <p className="task__details__state">{task.state}</p> */}
       </div>
 
       <div className="task__actions">
-        <FaMinus className="task__actions__action minus" />
+        <FaMinus className="task__actions__action minus" onClick={onDelete} />
+
         {task.state === 'done' ? (
           <FaRedo className="task__actions__action check" />
         ) : (
