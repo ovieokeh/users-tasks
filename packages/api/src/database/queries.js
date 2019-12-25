@@ -24,7 +24,7 @@ const createTasksTable = `
     id serial PRIMARY KEY,
     description text NOT NULL,
     state varchar (8) NOT NULL,
-    user_id int REFERENCES users (id)
+    user_id int REFERENCES users ON DELETE CASCADE
   )
 `
 

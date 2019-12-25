@@ -9,9 +9,10 @@ type IProps = {
   user: IUser
   isSelected: boolean
   onClick: () => void
+  onDelete: () => void
 }
 
-const User: React.FC<IProps> = ({ user, isSelected, onClick }) => {
+const User: React.FC<IProps> = ({ user, isSelected, onClick, onDelete }) => {
   const indicatorClassname = isSelected ? 'flip' : ''
 
   return (
@@ -26,7 +27,7 @@ const User: React.FC<IProps> = ({ user, isSelected, onClick }) => {
 
         <div className="user__actions">
           <FaEdit className="user__actions__action edit" />
-          <FaMinus className="user__actions__action minus" />
+          <FaMinus onClick={onDelete} className="user__actions__action minus" />
         </div>
       </div>
       <Tasks userId={user.id} show={isSelected} />
