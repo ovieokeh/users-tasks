@@ -9,7 +9,7 @@ const createTask = `
   VALUES ($1, $2, $3)
   RETURNING *
 `
-const getUserTasks = 'SELECT * FROM tasks WHERE user_id = $1'
+const getUserTasks = 'SELECT * FROM tasks WHERE user_id = $1 ORDER BY id ASC'
 const updateUserTask = 'UPDATE tasks SET state = $1 WHERE id = $2;'
 const deleteTask = 'DELETE FROM tasks WHERE id = $1;'
 

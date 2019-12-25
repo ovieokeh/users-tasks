@@ -36,6 +36,7 @@ const NewTask: React.FC<IProps> = ({ userId, onTaskCreate }) => {
             type="text"
             value={newTaskInput}
             onChange={e => setNewTaskInput(e.target.value)}
+            placeholder="Enter the new task's description"
             autoFocus
           />
         </form>

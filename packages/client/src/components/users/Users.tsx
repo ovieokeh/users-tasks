@@ -2,14 +2,14 @@ import * as React from 'react'
 import Spinner from 'react-loader-spinner'
 
 import User from '../user/User'
-import useUsers from '../user-tasks/useUsers'
+import useUsers from './useUsers'
 import { deleteUser, updateUser } from '../../actions'
-import './UserTasks.less'
 import { IUser } from '../types'
+import './Users.less'
 
 const { useState, useEffect } = React
 
-const UserTasks: React.FC = () => {
+const Users: React.FC = () => {
   const [users, isLoading] = useUsers()
   const [selectedUser, selectUser] = useState<null | number>(null)
   const [usersToRender, setUsersToRender] = useState([])
@@ -77,4 +77,4 @@ const UserTasks: React.FC = () => {
   return <div className="users">{renderUsers()}</div>
 }
 
-export default UserTasks
+export default Users

@@ -12,22 +12,12 @@
   transition: background-color ease;
   cursor: pointer;
 
-  &:hover {
-    background-color: @white;
-  }
-
-  @media screen and (max-width: 768px) {
-    &:hover {
-      background-color: @brand-peach-30;
-    }
-  }
-
   &__details {
     display: flex;
     align-items: center;
     padding-left: 20px;
-    text-decoration: none;
     color: @brand-indigo;
+    height: 100%;
 
     & > * {
       pointer-events: none;
