@@ -3,8 +3,9 @@ import Spinner from 'react-loader-spinner'
 
 import User from '../user/User'
 import useUsers from '../user-tasks/useUsers'
-import { deleteUser } from '../../actions'
+import { deleteUser, updateUser } from '../../actions'
 import './UserTasks.less'
+import { IUser } from '../types'
 
 const { useState, useEffect } = React
 
@@ -35,6 +36,24 @@ const UserTasks: React.FC = () => {
       setUsersToRender(newUserList)
     })
 
+  const onUserUpdate = (user: IUser) => (updatedName: string) => {
+    updateUser(user.id, updatedName).then(() => {
+      const updatedUser: IUser = { ...user, name: updatedName }
+
+      const newUserList = usersToRender
+        .filter(u => u.id !== user.id)
+        .concat([updatedUser])
+        .sort((a, b) => {
+          if (a.id > b.id) return 1
+          if (a.id < b.id) return -1
+
+          return 0
+        })
+
+      setUsersToRender(newUserList)
+    })
+  }
+
   const renderUsers = () => {
     if (isLoading)
       return <Spinner type="Puff" color="#f4d8cd" height={80} width={80} />
@@ -49,6 +68,7 @@ const UserTasks: React.FC = () => {
           isSelected={isSelected}
           onClick={onUserClick(user.id)}
           onDelete={onUserDelete(user.id)}
+          onUpdate={onUserUpdate(user)}
         />
       )
     })

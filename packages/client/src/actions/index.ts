@@ -14,7 +14,17 @@ const deleteUser = userId => axios.delete(API_URL + `users/${userId}`)
 
 const deleteTask = taskId => axios.delete(API_URL + `tasks/${taskId}`)
 
+const updateUser = (userId: number, updatedName: string) =>
+  axios.put(API_URL + `users/${userId}`, { updatedName })
+
 const updateTask = (taskId: number, state: 'done' | 'not done') =>
   axios.put(API_URL + `tasks/${taskId}`, { state })
 
-export { fetchUsers, fetchTasks, deleteUser, deleteTask, updateTask }
+export {
+  fetchUsers,
+  fetchTasks,
+  deleteUser,
+  deleteTask,
+  updateUser,
+  updateTask
+}
