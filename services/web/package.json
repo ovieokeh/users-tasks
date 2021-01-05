@@ -16,7 +16,7 @@
   "author": "ovie okeh",
   "license": "Apache-2.0",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "react": "^16.3.0",
     "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0",
     "react-icons": "^3.8.0",
